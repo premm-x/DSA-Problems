@@ -15,12 +15,12 @@
 
 6. Graph -------------------------------------------------------------------------------------------
 
-  1. dijkstra's algo  ✔
-  2. bellman ford algo  ✔
-  3. prim's algo  ✔
-  4. kosaraju's algo  ✔
-  5. tarjan's algo  ✔
-  6. flood fill  ✔
+  1. dijkstra's algo  ✔  -->  O(E + E log V)
+  2. bellman ford algo  ✔  -->  O(E * V)
+  3. prim's algo  ✔  --> 
+  4. kosaraju's algo  ✔  -->  O(E + V)
+  5. tarjan's algo  ✔  -->  
+  6. flood fill  ✔  -->  
   7. kruskal's algo
   8. kahn's algo
   9. floys warshall algo
