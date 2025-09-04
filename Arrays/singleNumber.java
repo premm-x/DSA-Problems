@@ -1,4 +1,4 @@
-// brute --- O(n) --- two pointer
+// brute - on sorted data --- O(n) --- two pointer
 
 int arr1[] = { 1,1,2,2,3,4,4,5,5 };
 int arr2[] = { 1,2,2,3,3,4,4,5,5 };
