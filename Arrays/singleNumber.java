@@ -18,3 +18,22 @@ while (end < n) {
 }
 
 if(end >= n) System.out.println(arr[s]);
+
+// ---------------------( 2 )------------------------
+
+// xor - also on unsorted work --- O(n) --- XOR
+
+int arr[] = { 1,1,2,2,3,3,4,4,5 };
+int n = arr.length;
+
+int sum = 0;
+
+for (int i = 0; i < arr.length; i++) {
+   sum = arr[i] ^ sum;
+}
+
+System.out.println(sum);
+
+
+
+
