@@ -1,4 +1,4 @@
-// brute - on sorted data 
+// brute - on sorted data  --- O(n)
 
 int arr[] = { 1, 2, 2,3, 5 };
 int n = arr.length;
