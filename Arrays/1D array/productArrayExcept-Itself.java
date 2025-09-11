@@ -1,7 +1,7 @@
 //1. brute --- O(n²) --- two forLoop
 //2. optimal --- O(2n) - sc O(n) (sc because using **array**);
 
-//3. optimal --- O(2n) - sc O(1)
+//3. optimal --- O(2n) - sc O(1) --- prefix + suffix
 public int[] productExceptSelf(int[] nums) {
         
         int[] ans = new int[nums.length];
