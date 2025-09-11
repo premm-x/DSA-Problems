@@ -19,3 +19,31 @@ public int[] productExceptSelf(int[] nums) {
 
         return ans;
 }
+
+//----------------------------------------------------------
+//                       custom
+//----------------------------------------------------------
+
+public int[] productExceptSelf(int[] nums) {
+        int ans[] = new int[nums.length];
+        int fp = 0, sp = 0, mul = 1;
+        
+        while (fp < nums.length) {
+            if(fp != sp){
+                mul *= nums[sp];
+                sp++;
+            }
+            else{
+                sp++;
+            }
+
+            if(sp >= nums.length){
+                ans[fp] = mul;
+                mul = 1;
+                sp = 0;
+                fp++;
+            } 
+        }
+        return ans;
+    }
+//-----------------------------------------
