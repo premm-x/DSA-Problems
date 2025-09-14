@@ -1,6 +1,6 @@
 // 1. brute --- for loop --- O(n) 
 // 2. optimal --- binary search --- O(log n)
-
+// ( also done in recursion )
 public int search(int[] arr, int trg) {
         
         int st = 0, end = arr.length-1;
