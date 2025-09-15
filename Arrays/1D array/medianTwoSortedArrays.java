@@ -28,7 +28,7 @@ public double findMedianSortedArrays(int[] nums1, int[] nums2) {
     }
 
 
-// 2. optimal --- O(log (m+n)
+// 2. optimal --- O(m+n)
 
 public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
