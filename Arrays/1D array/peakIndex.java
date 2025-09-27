@@ -46,7 +46,7 @@ if(arr.length == 1) return 0;
 //------------------------------------------------------------------------------
 //-----------------------------------without -infinit-------------------------------------------
 // 1. brute --- for loop --- O(n)
-// 2. optimal --- O(og n)
+// 2. optimal --- O(log n)
 public int peakIndexInMountainArray(int[] arr) {
         
         int st = 1, end = arr.length-2;
