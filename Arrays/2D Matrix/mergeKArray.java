@@ -1,4 +1,4 @@
-// Brute --- tc O(n log n) - sc O(n) --- Queue
+// Brute --- tc O(n² log n) - sc O(n) --- Queue
 
 public static ArrayList<Integer> mergeKArrays(int[][] arr, int K) {
         
