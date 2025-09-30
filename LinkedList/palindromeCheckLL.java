@@ -1,3 +1,11 @@
+/*
+-------------- method's -----------------
+1. stack/ array
+2. middle-reverse-check
+3. Recursive & backtracing Approach
+4. Convert to String / Number (Not recommended) Works, but not memory-efficient.
+*/
+
 //solution - 1
 // middle-reverse-check --- O(n)
 
