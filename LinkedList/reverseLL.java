@@ -1,3 +1,12 @@
+/* 
+------- method's -------
+1. three pointer approch --- Time: O(n), Space: O(1)
+2. recursive approch --- Time: O(n), Space: O(n) due to recursion stack.
+3. using stack approch --- Time: O(n), Space: O(n)
+*/
+
+// solution - 2
+
 // recursive --- O(n)
 class Solution {
     ListNode helper(ListNode head){
