@@ -1,6 +1,6 @@
 // solution - 1
 
-// pointer sum with carry --- tc: O(n) sc: O(1)
+// pointer sum with carry --- tc: O(max(n,m)) sc: O(max(n,m))
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         
