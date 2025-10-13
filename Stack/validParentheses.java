@@ -1,6 +1,6 @@
 // solution - 1
 
-// stack --- tc: O(n) sc: O(1)
+// stack --- tc: O(n) sc: O(n)
 class Solution {
     public boolean isValid(String s) {
         Stack<Character> st = new Stack<>();
