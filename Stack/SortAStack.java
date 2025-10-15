@@ -1,6 +1,27 @@
-// solution - 2
-// recursion + stack --- tc: O(n²) sc: O(n)
+// solution - 3
 
+// iterative --- tc: O(n²) sc: O(n)(recursion)
+ public static Stack<Integer> sortStack(Stack<Integer> stack) {
+        Stack<Integer> tmpStack = new Stack<>();
+
+        while (!stack.isEmpty()) {
+            int curr = stack.pop();
+            
+            while (!tmpStack.isEmpty() && tmpStack.peek() > curr) {
+                stack.push(tmpStack.pop());
+            }
+            tmpStack.push(curr);
+        }
+
+        while (!tmpStack.isEmpty()) {
+            stack.push(tmpStack.pop());
+        }
+
+        return stack;
+    }
+
+//------------------------- ( 2 ) -----------------------------
+// recursion + stack --- tc: O(n²) sc: O(n)
 class Solution {
     public void sortStack(Stack<Integer> st) {
         if(st.isEmpty()) return;
@@ -27,7 +48,7 @@ class Solution {
     }
 }
 
-//------------------------ ( 2 ) -------------------------
+//------------------------ ( 3 ) -------------------------
 // recursive without extra stack --- tc: O(n²) sc: O(n)
 class Solution {
     static void insertSorted(Stack<Integer> stack, int element) {
