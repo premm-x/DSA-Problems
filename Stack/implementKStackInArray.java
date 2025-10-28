@@ -1,4 +1,6 @@
 // solution - 2
+// also we can use LL to solve this
+
 // good but space is not fully used of array --- tc: O(1) sc: O(n)
 class kStacks {
     private int[] arr;
