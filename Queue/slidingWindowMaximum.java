@@ -1,6 +1,6 @@
 // solution - 1
 
-// Deque approch --- tc: O(n) sc: (n)
+// Deque approch --- tc: O(n) sc: (k)
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         
