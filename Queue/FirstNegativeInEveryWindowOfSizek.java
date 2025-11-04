@@ -1,6 +1,6 @@
 // solution -1
 
-// sliding Window max approch used i here --- tc: O(n) sc: O(n)
+// sliding Window max approch used i here --- tc: O(n) sc: O(k)
 class Solution {
     static List<Integer> firstNegInt(int arr[], int k) {
         
