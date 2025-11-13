@@ -1,6 +1,6 @@
 // solution - 1
 
-// Deque based approch optimal --- tc: O(n) sc: O(n)
+// Deque based approch optimal --- tc: O(n) sc: O(k)
 class Solution {
     public int maxOfSubarrays(int[] arr, int k) {
 
