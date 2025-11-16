@@ -1,5 +1,5 @@
 //----------------- ( remaining ) -----------------
-// level-order -- (recursion / iteration)
+// level-order -- (recursion)
 // zig-zag-order -- (recursion / iteration)
 // boundry-order -- (recursion / iteration)
 // vertical-order -- (recursion / iteration)
@@ -9,6 +9,7 @@
 // pre-order -- (recursion / iteration)
 // in-order -- (recursion / iteration)
 // post-order -- (recursion / iteration)
+// level-order -- (iteration)
 //-------------------------------------------------
 static class BinaryTree {
         // recursion
@@ -103,8 +104,33 @@ static class BinaryTree {
             while (!st2.isEmpty()) {
                 System.out.print(st2.pop().val + " ");
             }
-
         }
+        
+        // level-order -- (iteration)
+        List<List<Integer>> levelOrder(Node root) {
+            List<List<Integer>> ans = new ArrayList<>(); // used to return as list not compulsory
+            Queue<Node> q = new ArrayDeque<>();
+
+            if (root != null)
+                q.add(root);
+
+            while (!q.isEmpty()) {
+                int size = q.size();
+                List<Integer> temp = new ArrayList<>();
+
+                for (int i = 0; i < size; i++) {
+                    Node curr = q.poll();
+                    temp.add(curr.val);
+                    if (curr.left != null)
+                        q.add(curr.left);
+                    if (curr.right != null)
+                        q.add(curr.right);
+                }
+                ans.add(temp);
+            }
+            return ans;
+        }
+
 
     }
 
