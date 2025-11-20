@@ -1,5 +1,4 @@
 //----------------- ( remaining ) -----------------
-// level-order -- (recursion)
 // zig-zag-order -- (recursion / iteration)
 // boundry-order -- (recursion / iteration)
 // vertical-order -- (recursion / iteration)
@@ -9,7 +8,7 @@
 // pre-order -- (recursion / iteration)
 // in-order -- (recursion / iteration)
 // post-order -- (recursion / iteration)
-// level-order -- (iteration)
+// level-order -- (recursion / iteration)
 //-------------------------------------------------
 static class BinaryTree {
         // recursion
@@ -130,6 +129,29 @@ static class BinaryTree {
             }
             return ans;
         }
+        // level-order -- (recursion)
+        class levelOrderRec {
+                void leftViewDFS(Node root, int level, List<Integer> ans, int[] maxLevel) {
+                    if (root == null)
+                        return;
+        
+                    if (level > maxLevel[0]) {
+                        ans.add(root.val);
+                        maxLevel[0] = level;
+                    }
+        
+                    leftViewDFS(root.left, level + 1, ans, maxLevel);
+                    leftViewDFS(root.right, level + 1, ans, maxLevel);
+                }
+        
+                List<Integer> leftView(Node root) {
+                    List<Integer> ans = new ArrayList<>();
+                    int[] maxLevel = { 0 }; // using array to mutate inside recursion
+                    leftViewDFS(root, 1, ans, maxLevel);
+                    return ans;
+                }
+            }
+
 
 
     }
