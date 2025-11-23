@@ -1,7 +1,7 @@
 //----------------- ( remaining ) -----------------
 // zig-zag-order -- (recursion / iteration)
 // boundry-order -- (recursion / iteration)
-// vertical-order -- (recursion / iteration)
+// vertical-order -- (recursion)
 //-------------------------------------------------
 
 //----------------- ( completed ) -----------------
@@ -9,6 +9,7 @@
 // in-order -- (recursion / iteration)
 // post-order -- (recursion / iteration)
 // level-order -- (recursion / iteration)
+// vertical-order -- (iteration)
 //-------------------------------------------------
 static class BinaryTree {
         // recursion
@@ -152,6 +153,54 @@ static class BinaryTree {
                 }
             }
 
+// ---------------------------------------------
+// vertical-order -- (bfs -- iteration )
+class Solution {
+    class Triple{
+        TreeNode node;
+        int zone;
+        int level;
+        Triple(TreeNode n, int z, int l){ node = n; zone = z; level = l; }
+    }
+
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+
+        TreeMap<Integer, List<int[]>> map = new TreeMap<>();
+        Queue<Triple> q = new ArrayDeque<>();
+
+        q.add(new Triple(root, 0, 1));
+
+        while(!q.isEmpty()){
+            Triple t = q.poll();
+            TreeNode currNode = t.node;
+            int zone = t.zone;
+            int level = t.level;
+
+            if(!map.containsKey(zone)) map.put(zone, new ArrayList<>());
+            map.get(zone).add(new int[]{ level, currNode.val });
+
+            if(currNode.left != null) q.add(new Triple(currNode.left, zone-1, level+1));
+            if(currNode.right != null) q.add(new Triple(currNode.right, zone+1, level+1));
+        }
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for(List<int[]> list : map.values()){
+
+            Collections.sort(list, (a, b) -> {
+                if(a[0] != b[0]) return a[0] - b[0];
+                return a[1] - b[1];
+            });
+
+            List<Integer> col = new ArrayList<>();
+            for(int[] arr : list) col.add(arr[1]);
+
+            ans.add(col);
+        }
+
+        return ans;
+    }
+}
 
 
     }
