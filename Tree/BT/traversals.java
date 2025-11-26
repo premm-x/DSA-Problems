@@ -10,6 +10,7 @@
 // post-order -- (recursion / iteration)
 // level-order -- (recursion / iteration)
 // vertical-order -- (iteration)
+// diagonal-order -- (recursion / iteration)
 //-------------------------------------------------
 static class BinaryTree {
         // recursion
