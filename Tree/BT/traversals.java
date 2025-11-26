@@ -201,7 +201,76 @@ class Solution {
         return ans;
     }
 }
+// ----------------------------------------------------------------------------------------
+// ------------------------------- 1 ----------------------------------
+// there is two way using bfs and dfs both gives different answer 
+        
+// diagonal trversel ( iterative ) based on level 
+class Tree {
+    
+    class Pair{
+        Node node;
+        int dia;
+        Pair(Node n, int d){ node = n; dia = d; }
+    }
+    
+    public ArrayList<Integer> diagonal(Node root) {
+        
+        TreeMap<Integer, ArrayList<Integer>> map = new TreeMap<>();
+        Queue<Pair> q = new ArrayDeque<>();
+        q.offer(new Pair(root, 0));
+        
+        while(!q.isEmpty()){
+            Pair p = q.poll();
+            Node curr = p.node;
+            int d = p.dia;
+            
+            if(!map.containsKey(d)) map.put(d, new ArrayList<>());
+            map.get(d).add(curr.data);
+            
+            if(curr.left != null) q.offer(new Pair(curr.left, d+1));
+            if(curr.right != null) q.offer(new Pair(curr.right, d));
+            
+        }
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        for(ArrayList<Integer> l : map.values()){
+            ans.addAll(l);
+        }
+        
+        return ans;
+    }
+}
+        // ------------------------------- 2 ----------------------------------
+// diagonal trversel ( recursive ) based on dfs 
+class Tree {
+    
+    void maindiagonalRecusiveHelper(Node root, int level, TreeMap<Integer, ArrayList<Integer>> map){
+        if(root == null) return;
 
+        if(!map.containsKey(level)) map.put(level, new ArrayList<>());
+        map.get(level).add(root.data);
+
+        maindiagonalRecusiveHelper(root.left, level+1, map);
+        maindiagonalRecusiveHelper(root.right, level, map);
+    }
+
+    public ArrayList<Integer> diagonal(Node root) {
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        TreeMap<Integer, ArrayList<Integer>> map = new TreeMap<>();
+        
+        maindiagonalRecusiveHelper(root, 0, map);
+        
+        for(ArrayList<Integer> l : map.values()){
+            ans.addAll(l);
+        }
+        
+        return ans;
+    }
+}
+// ----------------------------------------------------------------------------------------
 
     }
 
