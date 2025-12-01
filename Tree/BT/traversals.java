@@ -1,6 +1,5 @@
 //----------------- ( remaining ) -----------------
-// zig-zag-order -- (recursion / iteration)
-// boundry-order -- (recursion / iteration)
+// zig-zag-order -- (recursion)
 // vertical-order -- (recursion)
 //-------------------------------------------------
 
@@ -11,6 +10,8 @@
 // level-order -- (recursion / iteration)
 // vertical-order -- (iteration)
 // diagonal-order -- (recursion / iteration)
+// boundry-order -- (mix)
+// zig-zag-order -- (iteration)
 //-------------------------------------------------
 static class BinaryTree {
         // recursion
@@ -272,6 +273,108 @@ class Tree {
     }
 }
 // ----------------------------------------------------------------------------------------
+// boundry-order (mix) --- Time: O(n) Space: O(height) due to recursion (worst-case O(n))
+// top left bottom right -- 4 direction
+class Solution {
+    
+    void bottom(Node root, ArrayList<Integer> ans){
+        if(root == null) return;
+        
+        if(root.left == null && root.right == null){
+            ans.add(root.data);
+            return;
+        }
+            
+        bottom(root.left, ans);
+        bottom(root.right, ans);
+    }
+    
+    ArrayList<Integer> boundaryTraversal(Node root) {
+
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        if(!(root.left == null && root.right == null))
+            ans.add(root.data);
+        
+        Node leftSide = root.left;
+        
+        while(leftSide != null && (leftSide.left != null || leftSide.right != null)){
+            
+            if(leftSide.left != null) {
+                ans.add(leftSide.data);
+                leftSide = leftSide.left;
+            }
+            else {
+                ans.add(leftSide.data);
+                leftSide = leftSide.right;
+            }
+        }
+        
+
+        bottom(root, ans);
+        
+        Node rightSide = root.right;
+        ArrayList<Integer> temp = new ArrayList<>();
+        
+        while(rightSide != null && (rightSide.left != null || rightSide.right != null)){
+            
+            if(rightSide.right != null) {
+                temp.add(rightSide.data);
+                rightSide = rightSide.right;
+            }
+            else {
+                temp.add(rightSide.data);
+                rightSide = rightSide.left;
+            }
+        }
+        
+        Collections.reverse(temp);
+        ans.addAll(temp);
+        
+        return ans;
+    }
+}
+
+// ---------------------------------------- (  zig-zag-order ) ------------------------------------------------
+// zig-zag-order -- (iteration) --- 
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        
+        List<List<Integer>> ans = new ArrayList<>();
+
+        if(root == null) return ans;
+
+        Queue<TreeNode> order = new ArrayDeque<>();
+        order.offer(root);
+
+        boolean turn = false;
+
+        while(!order.isEmpty()){
+
+            int size = order.size();
+            List<Integer> eachLevel = new ArrayList<>();
+
+            for(int i=0; i<size; i++){
+
+                TreeNode temp = order.poll();
+
+                if(temp.left != null) order.offer(temp.left);
+                if(temp.right != null) order.offer(temp.right);
+
+                eachLevel.add(temp.val);
+            }
+
+            if(turn){
+                Collections.reverse(eachLevel);
+            }
+            ans.add(eachLevel);
+
+            turn = !turn;
+        }
+
+        return ans;
+    }
+}
 
     }
 
