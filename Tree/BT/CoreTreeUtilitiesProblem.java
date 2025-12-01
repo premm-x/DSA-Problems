@@ -1,7 +1,6 @@
 
 //---------------- ( remaiming ) ------------------
-// balance
-// diameter
+//-------------------------------------------------
 
 //---------------- ( completed ) ------------------
 // height
@@ -10,6 +9,8 @@
 // check Two Tree Are Identical
 // subtree In Another Tree
 // mirror Tree
+// diameter
+// balance
 //-------------------------------------------------
 
 // height
@@ -60,4 +61,50 @@ Node mirrorTree(Node root) {
 
     return root;
 }
+
+// diameter
+class Solution {
+    int maxDiameter = 0;
+    
+    int height(TreeNode root){
+        if(root == null) return 0;
+
+        int left = height(root.left);
+        int right = height(root.right);
+
+        maxDiameter = Math.max(maxDiameter, left + right);
+
+        return 1 + Math.max(left, right);
+    }
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        height(root);
+        return maxDiameter;
+    }
+}
+
+// balance
+class Solution {
+
+    int helper(TreeNode root){
+        if(root == null) return 0;
+
+        int l = helper(root.left);
+        if(l == -1) return -1;
+        
+        int r = helper(root.right);
+        if(r == -1) return -1;
+
+        if(Math.abs(l-r) > 1) return -1;
+        
+        return 1 + Math.max(l, r);
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        if(root == null) return true;
+
+        return helper(root) != -1;
+    }
+}
+
 
