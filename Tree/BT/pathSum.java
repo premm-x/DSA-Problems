@@ -1,4 +1,11 @@
-// solution - 1
+// solution - 3
+
+/* 3 ways 
+- 1. with sum outside function
+- 2. with sum inside function
+- 3. without sum (remaing value formula (trg - root.val) )
+
+*/
 
 // dfs (sum handel outside function) --- tc: O(n) sc: O(n) 
 class Solution {
@@ -39,6 +46,15 @@ class Solution {
     }
 }
 
+// ------------------------------ ( 3 ) -----------------------------------
+// dfs (same just) (without sum) --- tc: O(n) sc: O(n) 
+class Solution {
+    public boolean hasPathSum(TreeNode root, int trg) {
+        if(root == null) return false;
+        if(root.left == null && root.right == null) return root.val == trg;
+        return hasPathSum(root.left, trg - root.val) || hasPathSum(root.right, trg - root.val);
+    }
+}
 
 
 
