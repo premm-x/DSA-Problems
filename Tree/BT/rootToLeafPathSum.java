@@ -1,4 +1,4 @@
-// solution - 1
+// solution - 2
 
 // dfs --- tc: O(n) sc: O(n)
 class Solution {
@@ -21,4 +21,27 @@ class Solution {
     }
 }
 
+//---------------------------- ( 2 ) -------------------------------
+// little bit different fron 1 --- it leetcode 129
+// dfs --- tc: O(n) sc: O(n)
+class Solution {
+    int sum = 0;
 
+    void helper(TreeNode root, int str) {
+        if(root == null) return;
+        
+        str = str * 10 + root.val;
+
+        if(root.left == null && root.right == null){
+            sum += str;
+        }
+        
+        helper(root.left, str);
+        helper(root.right, str);
+    }
+
+    public int sumNumbers(TreeNode root) {
+        helper(root, 0);
+        return sum;
+    }
+}
