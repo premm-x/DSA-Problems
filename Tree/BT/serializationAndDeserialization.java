@@ -1,4 +1,4 @@
-// solution - 1
+// solution - 2 (bfs, dfs)
 
 // bfs --- tc: O(n) sc: O(n)
 public class Codec {
@@ -52,3 +52,44 @@ public class Codec {
         return root;
     }
 }
+
+//----------------------------------- ( 2 ) ----------------------------------------
+// dfs  --- tc: O(n) sc: O(n)
+public class Codec {
+
+    String s = "";
+    public String serialize(TreeNode root) {
+        if (root == null) return s = s + "#,";
+
+        s = s + root.val + ",";
+
+        serialize(root.left);
+        serialize(root.right);
+
+        return s;
+    }
+    
+    int idx = -1;
+
+    TreeNode build(String[] val){
+        idx++;
+
+        if(val[idx].equals("#")) return null;
+
+        TreeNode root = new TreeNode(Integer.parseInt(val[idx]));
+
+        root.left = build(val);
+        root.right = build(val);
+
+        return root;
+    }
+
+    public TreeNode deserialize(String data) {
+        if(data.length() == 0) return null;
+
+        String val[] = data.split(",");
+
+        return build(val);
+    }
+}
+
