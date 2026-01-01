@@ -1,4 +1,5 @@
 // solution - 1
+// This is a greedy algorithm. 
 
 // mst optimazied with dsu ( kruskal's algo ) --- tc: O(E log E) sc: O(V)
 class Solution {
