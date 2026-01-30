@@ -1,6 +1,6 @@
 // solution - 1
 
-// bfs + dfs approch ( parent stored for traversel ) --- tc: O(N * L * output size) ( O(N*L*dfs) ),  sc: O(O(N × L)
+// bfs + dfs approch ( parent stored for traversel ) --- tc: O(N * L * output size) -- ( O(N*L*dfs) ),  sc: O(N × L)
 )
 class Solution {
     List<List<String>> result = new ArrayList<>();
